@@ -864,14 +864,56 @@
 }
 
 @media (max-width: 720px) {
-  .masthead {
-    top: 10px;
-    padding: 16px;
-    flex-direction: column;
+  .appShell {
+    padding: 12px;
   }
 
-  .endingRecapGrid {
-    grid-template-columns: 1fr;
+  .masthead {
+    top: 8px;
+    padding: 14px;
+    gap: 14px;
+    flex-direction: column;
+    border-radius: 18px;
+  }
+
+  .masthead h1 {
+    font-size: 1.8rem;
+    line-height: 1.08;
+    margin: 0;
+  }
+
+  .eyebrow {
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+
+  .authorCredit {
+    margin: 6px 0 10px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  .deck {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .topControls {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 8px;
+  }
+
+  .topControls .secondaryButton {
+    min-height: 46px;
+    padding: 10px 8px;
+    font-size: 0.78rem;
+  }
+
+  .novelLayout {
+    gap: 14px;
   }
 
   .sceneCard,
@@ -879,12 +921,96 @@
     border-radius: 20px;
   }
 
-  .variableGrid {
-    grid-template-columns: 1fr;
+  .sceneCard {
+    padding: 18px;
+  }
+
+  .sceneMetaRow {
+    gap: 8px;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+  }
+
+  .sceneMetaRow.cast {
+    font-size: 0.86rem;
+  }
+
+  .progressPanel,
+  .locationPlate,
+  .panelBlock {
+    padding: 14px;
+  }
+
+  .storyBody {
+    gap: 14px;
+    margin: 20px 0 24px;
+  }
+
+  .storyParagraph p {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .choiceButton {
+    padding: 14px 15px;
+    border-radius: 16px;
+  }
+
+  .choiceText {
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  .dossierPanel {
+    padding: 14px;
   }
 
   .tabs {
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tabButton {
+    flex: 0 0 auto;
+    min-width: 132px;
+    min-height: 44px;
+    padding: 10px 12px;
+    scroll-snap-align: start;
+    white-space: nowrap;
+  }
+
+  .flagCard > div,
+  .evidenceCard > div,
+  .achievementCard > div,
+  .signalCard > div,
+  .saveSlotRow {
+    align-items: flex-start;
+  }
+
+  .endingRecapGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .endingCasefile,
+  .endingRecapCard {
+    padding: 14px;
+  }
+
+  .endingCasefileHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .variableGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1142,3 +1268,46 @@
 
 
 
+
+
+@media (max-width: 540px) {
+  .masthead h1 {
+    font-size: 1.55rem;
+  }
+
+  .topControls {
+    grid-template-columns: 1fr;
+  }
+
+  .topControls .secondaryButton {
+    width: 100%;
+  }
+
+  .sceneCard {
+    padding: 16px 14px;
+  }
+
+  .sceneMetaRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .progressHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .locationPlate strong,
+  .endingCasefileHeader strong {
+    font-size: 0.92rem;
+  }
+
+  .choiceButton {
+    padding: 13px 14px;
+  }
+
+  .reportSheet {
+    padding: 16px;
+  }
+}
