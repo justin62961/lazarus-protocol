@@ -1,0 +1,204 @@
+﻿:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --bg: #061018;
+  --bg-deep: #03070d;
+  --text: #f0e9dd;
+  --text-soft: #c8bdaf;
+  --text-dim: #92877b;
+  --heading-color: #fff7ea;
+  --accent: #d3a163;
+  --accent-soft: #b88b55;
+  --border: rgba(221, 205, 182, 0.18);
+  --panel-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --sans: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --heading: 'Cormorant Garamond', Georgia, serif;
+  --mono: 'IBM Plex Mono', Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top, rgba(115, 147, 182, 0.14), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(179, 129, 74, 0.16), transparent 24%),
+    linear-gradient(180deg, #0a131d 0%, var(--bg) 42%, var(--bg-deep) 100%);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--text);
+  font: 16px/1.6 var(--sans);
+  overflow-x: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 96px
+    );
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.42) 100%),
+    linear-gradient(180deg, rgba(8, 12, 18, 0.2), rgba(8, 12, 18, 0.55));
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: -220px;
+  pointer-events: none;
+  opacity: 0.62;
+  background-image:
+    radial-gradient(1.2px 1.2px at 8% 14%, rgba(255, 244, 219, 0.98), transparent 55%),
+    radial-gradient(1.6px 1.6px at 18% 72%, rgba(255, 255, 255, 0.9), transparent 55%),
+    radial-gradient(1.2px 1.2px at 27% 38%, rgba(215, 226, 255, 0.95), transparent 55%),
+    radial-gradient(1.8px 1.8px at 36% 84%, rgba(255, 241, 210, 0.82), transparent 55%),
+    radial-gradient(1.2px 1.2px at 44% 22%, rgba(255, 255, 255, 0.9), transparent 55%),
+    radial-gradient(1.4px 1.4px at 55% 66%, rgba(214, 231, 255, 0.9), transparent 55%),
+    radial-gradient(1.2px 1.2px at 63% 31%, rgba(255, 245, 225, 0.95), transparent 55%),
+    radial-gradient(2px 2px at 74% 12%, rgba(255, 255, 255, 0.95), transparent 55%),
+    radial-gradient(1.2px 1.2px at 82% 58%, rgba(226, 235, 255, 0.9), transparent 55%),
+    radial-gradient(1.5px 1.5px at 91% 27%, rgba(255, 244, 219, 0.9), transparent 55%),
+    radial-gradient(1.2px 1.2px at 12% 90%, rgba(255, 255, 255, 0.86), transparent 55%),
+    radial-gradient(1.8px 1.8px at 69% 88%, rgba(245, 248, 255, 0.88), transparent 55%);
+  animation: driftStarsNear 30s linear infinite;
+  will-change: transform;
+}
+
+#root::before {
+  content: '';
+  position: fixed;
+  inset: -260px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.34;
+  background-image:
+    radial-gradient(1px 1px at 6% 10%, rgba(255, 255, 255, 0.8), transparent 55%),
+    radial-gradient(1px 1px at 14% 46%, rgba(255, 243, 220, 0.7), transparent 55%),
+    radial-gradient(1px 1px at 22% 80%, rgba(214, 231, 255, 0.75), transparent 55%),
+    radial-gradient(1px 1px at 31% 18%, rgba(255, 255, 255, 0.76), transparent 55%),
+    radial-gradient(1px 1px at 39% 58%, rgba(255, 245, 225, 0.74), transparent 55%),
+    radial-gradient(1px 1px at 48% 88%, rgba(238, 243, 255, 0.72), transparent 55%),
+    radial-gradient(1px 1px at 57% 22%, rgba(255, 255, 255, 0.76), transparent 55%),
+    radial-gradient(1px 1px at 66% 46%, rgba(255, 245, 225, 0.72), transparent 55%),
+    radial-gradient(1px 1px at 74% 79%, rgba(218, 231, 255, 0.72), transparent 55%),
+    radial-gradient(1px 1px at 85% 18%, rgba(255, 255, 255, 0.78), transparent 55%),
+    radial-gradient(1px 1px at 92% 66%, rgba(255, 244, 219, 0.72), transparent 55%);
+  animation: driftStarsFar 52s linear infinite;
+  will-change: transform;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading);
+  color: var(--heading-color);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  font-size: clamp(2.7rem, 5vw, 4.8rem);
+  line-height: 0.95;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 0.96;
+}
+
+h3 {
+  font-size: 1.35rem;
+}
+
+p {
+  margin: 0;
+}
+
+strong {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+em {
+  color: #e7dac8;
+}
+
+code {
+  font-family: var(--mono);
+  border-radius: 999px;
+  padding: 0.18rem 0.56rem;
+  background: rgba(222, 216, 208, 0.08);
+  color: #f6eee2;
+}
+
+small {
+  color: var(--text-dim);
+}
+
+a {
+  color: inherit;
+}
+
+
+
+@keyframes driftStarsNear {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-38px, 26px, 0) scale(1.015);
+  }
+
+  to {
+    transform: translate3d(-76px, 52px, 0) scale(1.03);
+  }
+}
+
+@keyframes driftStarsFar {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(22px, 14px, 0) scale(1.01);
+  }
+
+  to {
+    transform: translate3d(44px, 28px, 0) scale(1.02);
+  }
+}

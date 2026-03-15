@@ -1,0 +1,1144 @@
+.appShell {
+  min-height: 100vh;
+  padding: 32px;
+  position: relative;
+  isolation: isolate;
+}
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cloudLayer,
+.starfieldLayer {
+  position: absolute;
+  inset: -12%;
+}
+
+.cloudLayerOne {
+  animation: cloudDriftOne 96s linear infinite;
+  opacity: 0.56;
+}
+
+.cloudLayerTwo {
+  animation: cloudDriftTwo 124s linear infinite;
+  opacity: 0.42;
+}
+
+.cloud {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  filter: blur(42px);
+  mix-blend-mode: screen;
+}
+
+.cloudA {
+  left: 2%;
+  top: 8%;
+  width: 34vw;
+  height: 22vw;
+  background: radial-gradient(circle, rgba(92, 118, 152, 0.24), rgba(92, 118, 152, 0));
+}
+
+.cloudB {
+  right: 6%;
+  top: 18%;
+  width: 30vw;
+  height: 20vw;
+  background: radial-gradient(circle, rgba(162, 128, 84, 0.18), rgba(162, 128, 84, 0));
+}
+
+.cloudC {
+  left: 14%;
+  bottom: 10%;
+  width: 38vw;
+  height: 24vw;
+  background: radial-gradient(circle, rgba(69, 95, 124, 0.22), rgba(69, 95, 124, 0));
+}
+
+.cloudD {
+  right: 10%;
+  bottom: 2%;
+  width: 28vw;
+  height: 18vw;
+  background: radial-gradient(circle, rgba(132, 104, 69, 0.16), rgba(132, 104, 69, 0));
+}
+
+.starfieldLayerFar {
+  animation: starfieldFar 56s linear infinite;
+  opacity: 0.58;
+}
+
+.starfieldLayerNear {
+  animation: starfieldNear 32s linear infinite;
+  opacity: 0.9;
+}
+
+.star {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  background: rgba(255, 252, 244, 0.95);
+  box-shadow: 0 0 12px rgba(255, 245, 225, 0.72);
+  animation: twinkle 3.8s ease-in-out infinite alternate;
+}
+
+.starNear {
+  width: 3.5px;
+  height: 3.5px;
+  background: rgba(255, 248, 231, 0.98);
+}
+
+.starFar {
+  width: 2.25px;
+  height: 2.25px;
+  background: rgba(220, 232, 255, 0.92);
+}
+
+ï»¿.appShell {
+  min-height: 100vh;
+  padding: 32px;
+}
+
+.masthead {
+  position: sticky;
+  top: 14px;
+  z-index: 18;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  padding: 18px 20px;
+  border: 1px solid rgba(214, 208, 196, 0.12);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(10, 18, 28, 0.82), rgba(7, 13, 20, 0.68)),
+    rgba(7, 13, 20, 0.58);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.76rem;
+  color: var(--accent-soft);
+  margin-bottom: 10px;
+}
+
+.authorCredit {
+  margin: 8px 0 12px;
+  color: rgba(240, 233, 221, 0.82);
+  font-size: 0.92rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.deck {
+  max-width: 64ch;
+  color: var(--text-soft);
+}
+
+.topControls,
+.actionBar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.novelLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.95fr);
+  gap: 22px;
+}
+
+.stagePanel,
+.dossierPanel {
+  min-width: 0;
+}
+
+.sceneCard,
+.dossierPanel {
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(244, 236, 224, 0.04), rgba(10, 19, 29, 0.1)),
+    rgba(7, 13, 20, 0.03);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--panel-shadow);
+}
+
+.sceneCard {
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.sceneInner {
+  position: relative;
+  z-index: 1;
+}
+
+.sceneBackdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sceneBackdropGlow,
+.sceneBackdropTexture {
+  position: absolute;
+  inset: 0;
+}
+
+.sceneBackdropGlow {
+  filter: blur(28px);
+  opacity: 0.6;
+}
+
+.sceneBackdropGlowOne {
+  background: radial-gradient(circle at 18% 22%, rgba(194, 63, 58, 0.18), transparent 34%);
+}
+
+.sceneBackdropGlowTwo {
+  background: radial-gradient(circle at 78% 30%, rgba(103, 151, 198, 0.18), transparent 36%);
+}
+
+.sceneBackdropTexture {
+  opacity: 0.32;
+  mix-blend-mode: screen;
+}
+
+.sceneBackdrop--hospital .sceneBackdropGlowOne {
+  background: radial-gradient(circle at 22% 18%, rgba(202, 76, 82, 0.24), transparent 34%);
+}
+
+.sceneBackdrop--hospital .sceneBackdropGlowTwo {
+  background: radial-gradient(circle at 78% 26%, rgba(101, 152, 196, 0.22), transparent 36%);
+}
+
+.sceneBackdrop--hospital .sceneBackdropTexture {
+  background:
+    linear-gradient(135deg, rgba(164, 206, 233, 0.08), transparent 40%),
+    linear-gradient(0deg, rgba(208, 68, 68, 0.08), transparent 36%);
+}
+
+.sceneBackdrop--tunnel .sceneBackdropGlowOne {
+  background: radial-gradient(circle at 24% 72%, rgba(189, 95, 49, 0.24), transparent 34%);
+}
+
+.sceneBackdrop--tunnel .sceneBackdropGlowTwo {
+  background: radial-gradient(circle at 80% 18%, rgba(120, 137, 154, 0.16), transparent 38%);
+}
+
+.sceneBackdrop--tunnel .sceneBackdropTexture {
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0 2px, transparent 2px 32px),
+    linear-gradient(180deg, rgba(121, 53, 28, 0.08), transparent 44%);
+}
+
+.sceneBackdrop--archive .sceneBackdropGlowOne {
+  background: radial-gradient(circle at 18% 22%, rgba(170, 137, 89, 0.2), transparent 34%);
+}
+
+.sceneBackdrop--archive .sceneBackdropGlowTwo {
+  background: radial-gradient(circle at 78% 68%, rgba(111, 93, 67, 0.16), transparent 36%);
+}
+
+.sceneBackdrop--archive .sceneBackdropTexture {
+  background:
+    linear-gradient(180deg, rgba(198, 173, 129, 0.08), transparent 42%),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 26px);
+}
+
+.sceneBackdrop--chapel .sceneBackdropGlowOne {
+  background: radial-gradient(circle at 26% 20%, rgba(186, 126, 78, 0.18), transparent 32%);
+}
+
+.sceneBackdrop--chapel .sceneBackdropGlowTwo {
+  background: radial-gradient(circle at 74% 24%, rgba(98, 114, 168, 0.18), transparent 34%);
+}
+
+.sceneBackdrop--chapel .sceneBackdropTexture {
+  background:
+    linear-gradient(90deg, rgba(157, 87, 67, 0.06), transparent 26%, rgba(74, 98, 154, 0.06) 74%, transparent),
+    linear-gradient(180deg, rgba(241, 210, 144, 0.04), transparent 48%);
+}
+
+.sceneBackdrop--lab .sceneBackdropGlowOne {
+  background: radial-gradient(circle at 18% 28%, rgba(106, 210, 225, 0.16), transparent 30%);
+}
+
+.sceneBackdrop--lab .sceneBackdropGlowTwo {
+  background: radial-gradient(circle at 82% 22%, rgba(111, 143, 214, 0.18), transparent 34%);
+}
+
+.sceneBackdrop--lab .sceneBackdropTexture {
+  background:
+    linear-gradient(180deg, rgba(121, 213, 233, 0.08), transparent 38%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 22px);
+}
+
+.sceneBackdrop--city .sceneBackdropGlowOne {
+  background: radial-gradient(circle at 22% 18%, rgba(103, 145, 200, 0.18), transparent 32%);
+}
+
+.sceneBackdrop--city .sceneBackdropGlowTwo {
+  background: radial-gradient(circle at 76% 74%, rgba(180, 108, 74, 0.14), transparent 38%);
+}
+
+.sceneBackdrop--city .sceneBackdropTexture {
+  background:
+    linear-gradient(180deg, rgba(103, 145, 200, 0.08), transparent 42%),
+    linear-gradient(0deg, rgba(197, 109, 78, 0.06), transparent 34%);
+}
+
+.sceneBackdrop--default .sceneBackdropTexture {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 50%);
+}
+
+.sceneCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(199, 152, 92, 0.12), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(95, 130, 170, 0.14), transparent 28%);
+  pointer-events: none;
+}
+
+.sceneMetaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--text-dim);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.sceneMetaRow.cast {
+  margin-top: 10px;
+  text-transform: none;
+  letter-spacing: 0.03em;
+  font-size: 0.92rem;
+}
+
+.sceneBadge {
+  color: var(--accent);
+}
+
+.progressPanel {
+  margin-top: 18px;
+  margin-bottom: 22px;
+  padding: 14px 16px 16px;
+  border: 1px solid rgba(214, 208, 196, 0.14);
+  border-radius: 18px;
+  background: rgba(8, 16, 24, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.76rem;
+}
+
+.progressHeader strong {
+  color: var(--accent);
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+}
+
+.progressTrack {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(191, 213, 231, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(210, 227, 240, 0.08);
+}
+
+.progressFill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(167, 126, 73, 0.9), rgba(198, 219, 232, 0.82));
+  box-shadow: 0 0 14px rgba(194, 215, 230, 0.22);
+}
+
+.progressPanel p {
+  margin: 10px 0 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.storyBody {
+  display: grid;
+  gap: 16px;
+  margin: 26px 0 30px;
+  overflow-anchor: none;
+}
+
+.storyParagraph {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  will-change: max-height, opacity, transform;
+  animation: revealBlock 980ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.storyParagraph p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.78;
+  color: var(--text);
+}
+
+.storyParagraph code,
+.endingSummary code {
+  font-size: 0.8rem;
+}
+.locationPlate {
+  margin: 16px 0 20px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(214, 208, 196, 0.14);
+  background: rgba(8, 15, 24, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.locationPlate span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+}
+
+.locationPlate strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--heading-color);
+  font-size: 0.96rem;
+}
+
+.locationPlate p {
+  margin: 0;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+.choicesPanel h3,
+.panelBlock h3 {
+  margin: 0 0 14px;
+}
+
+.choiceList,
+.flagList,
+.evidenceList,
+.characterList,
+.achievementList,
+.saveList,
+.chronicle,
+.signalList {
+  display: grid;
+  gap: 12px;
+}
+
+.choiceButton,
+.tabButton,
+.primaryButton,
+.secondaryButton,
+.saveCard {
+  border: 1px solid var(--border);
+  background: rgba(14, 24, 36, 0.05);
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.choiceButton:hover,
+.tabButton:hover,
+.primaryButton:hover,
+.secondaryButton:hover,
+.saveCard:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.choiceButton:disabled,
+.primaryButton:disabled,
+.secondaryButton:disabled {
+  opacity: 0.46;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.choiceButton {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 18px;
+}
+
+.choiceLabel {
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.choiceText {
+  font-family: var(--heading);
+  font-size: 1.04rem;
+}
+
+.autoEffect,
+.characterMeta,
+.evidenceCard span,
+.flagCard span,
+.chronicleEntry span,
+.saveCard span,
+.signalCard span {
+  color: var(--text-dim);
+}
+
+.primaryButton,
+.secondaryButton,
+.tabButton,
+.saveCard {
+  border-radius: 14px;
+  padding: 12px 16px;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, rgba(173, 117, 56, 0.24), rgba(78, 95, 122, 0.26));
+}
+
+.activeControl {
+  background: rgba(177, 206, 224, 0.16);
+  border-color: rgba(201, 226, 240, 0.32);
+}
+
+.secondaryButton.small {
+  padding-inline: 14px;
+}
+
+.dossierPanel {
+  padding: 18px;
+  border-radius: 26px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tabButton {
+  font-size: 0.74rem;
+  line-height: 1.15;
+  text-align: center;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  padding: 10px 12px;
+}
+
+.tabButton.active {
+  background: rgba(179, 129, 74, 0.08);
+  border-color: rgba(214, 166, 108, 0.42);
+  color: var(--heading-color);
+}
+
+.tabContent {
+  display: grid;
+  gap: 16px;
+}
+
+.panelBlock {
+  border: 1px solid rgba(214, 208, 196, 0.12);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(8, 14, 22, 0.04);
+}
+
+.flagCard,
+.evidenceCard,
+.characterCard,
+.achievementCard,
+.chronicleEntry,
+.variableCard,
+.saveSlotRow,
+.signalCard {
+  border: 1px solid rgba(214, 208, 196, 0.12);
+  border-radius: 16px;
+  background: rgba(14, 22, 33, 0.035);
+}
+
+.flagCard,
+.evidenceCard,
+.characterCard,
+.achievementCard,
+.chronicleEntry,
+.signalCard {
+  padding: 14px;
+}
+
+.flagCard > div,
+.evidenceCard > div,
+.achievementCard > div,
+.saveSlotRow,
+.signalCard > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.flagCard.dominant {
+  border-color: rgba(214, 166, 108, 0.38);
+}
+
+.flagCard.active {
+  border-color: rgba(120, 156, 205, 0.24);
+}
+
+.evidenceCard.unlocked,
+.achievementCard.unlocked {
+  border-color: rgba(214, 166, 108, 0.28);
+}
+
+.achievementCard span {
+  color: var(--text-dim);
+}
+
+.threadsIntro {
+  margin: 0 0 14px;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.threadsSection + .threadsSection {
+  margin-top: 18px;
+}
+
+.threadsSection h4 {
+  margin: 0 0 10px;
+  color: var(--heading-color);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.characterMeta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.characterId {
+  color: var(--accent);
+}
+
+.variableGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.variableCard {
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.saveList {
+  gap: 10px;
+}
+
+.saveCard {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  gap: 4px;
+}
+
+.saveCard.autosave {
+  margin-bottom: 4px;
+}
+
+.saveCard small {
+  color: var(--text-soft);
+}
+
+.saveSlotRow {
+  padding: 8px;
+  align-items: center;
+}
+
+.endingSummary {
+  border-left: 2px solid var(--accent);
+  padding-left: 14px;
+  margin-top: 20px;
+}
+
+.endingSummary span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+}
+
+.endingPanel {
+  display: grid;
+  gap: 18px;
+}
+
+.endingCasefile {
+  padding: 18px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(214, 166, 108, 0.24);
+  background: linear-gradient(180deg, rgba(18, 27, 39, 0.32), rgba(8, 14, 22, 0.12));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.endingCasefileHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.endingCasefileHeader span {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+}
+
+.endingCasefileHeader strong {
+  color: var(--heading-color);
+  font-size: 1rem;
+}
+
+.endingCasefileLead {
+  margin: 0 0 10px;
+  color: var(--text-soft);
+  line-height: 1.65;
+}
+
+.endingRecapGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.endingRecapCard {
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(214, 208, 196, 0.12);
+  background: rgba(10, 18, 27, 0.1);
+}
+
+.endingRecapCard--wide {
+  grid-column: 1 / -1;
+}
+
+.endingRecapCard h3 {
+  margin: 0 0 12px;
+}
+
+.endingRouteList,
+.endingEvidenceList {
+  display: grid;
+  gap: 10px;
+}
+
+.endingRouteChip {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(214, 208, 196, 0.08);
+}
+
+.endingRouteChip span,
+.endingEvidenceRow p,
+.endingRecapCard small {
+  color: var(--text-dim);
+}
+
+.endingEvidenceRow strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.endingEvidenceRow p,
+.endingRecapCard p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+@keyframes revealBlock {
+  from {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    max-height: 40rem;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes achievementFlash {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+
+  14% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  78% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.02) translateY(-10px);
+  }
+}
+
+@media (max-width: 1080px) {
+  .appShell {
+    padding: 18px;
+  }
+
+  .novelLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .masthead {
+    top: 10px;
+    padding: 16px;
+    flex-direction: column;
+  }
+
+  .endingRecapGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sceneCard,
+  .dossierPanel {
+    border-radius: 20px;
+  }
+
+  .variableGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+
+.signalCard strong {
+  font-size: 1.02rem;
+}
+
+.signalCard p {
+  margin-top: 8px;
+}
+
+
+.achievementToastStack {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  padding: 24px;
+}
+
+.achievementToast {
+  width: min(440px, calc(100vw - 40px));
+  border: 1px solid rgba(205, 182, 134, 0.42);
+  border-radius: 22px;
+  padding: 18px 22px;
+  background: linear-gradient(180deg, rgba(13, 22, 33, 0.96), rgba(7, 12, 20, 0.92));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  animation: achievementFlash 1.6s ease forwards;
+}
+
+.achievementToast span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+}
+
+.achievementToast strong {
+  display: block;
+  color: var(--heading-color);
+  margin-bottom: 8px;
+  font-size: 1.22rem;
+}
+
+.achievementToast p {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+.reportOverlay {
+  z-index: 40;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(2, 6, 10, 0.64);
+  backdrop-filter: blur(8px);
+}
+
+.reportSheet {
+  width: min(860px, 100%);
+  max-height: min(88vh, 920px);
+  overflow: auto;
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid rgba(109, 83, 42, 0.35);
+  background:
+    linear-gradient(180deg, rgba(134, 105, 61, 0.1), rgba(95, 76, 45, 0.02)),
+    linear-gradient(180deg, #e7dcc5 0%, #dbcdaa 100%);
+  color: #232629;
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.reportSheet h2,
+.reportSheet h3,
+.reportSheet strong {
+  color: #171a1c;
+}
+
+.reportSheet p,
+.reportSheet span,
+.reportSheet small,
+.reportSheet button {
+  color: #2f3438;
+}
+
+.reportHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.reportKicker {
+  font-family: var(--mono);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.74rem;
+  color: #555b60;
+  text-transform: uppercase;
+}
+
+.reportIntro {
+  max-width: 54ch;
+}
+
+.reportClose {
+  border: 1px solid rgba(70, 50, 26, 0.18);
+  background: rgba(104, 109, 113, 0.32);
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.reportBlock {
+  padding-top: 18px;
+  margin-top: 18px;
+  border-top: 1px dashed rgba(70, 50, 26, 0.24);
+}
+
+.reportBlock:first-of-type {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.reportCard {
+  background: rgba(123, 127, 131, 0.22);
+  border-color: rgba(70, 50, 26, 0.14);
+}
+
+.reportInlineCard {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.reportSheet .saveCard,
+.reportSheet .secondaryButton {
+  background: rgba(129, 133, 138, 0.24);
+  border-color: rgba(70, 50, 26, 0.18);
+}
+
+.reportSheet .saveCard:hover,
+.reportSheet .secondaryButton:hover,
+.reportClose:hover {
+  border-color: #7d8489;
+}
+
+@media (max-width: 720px) {
+  .reportOverlay {
+    padding: 12px;
+  }
+
+  .reportSheet {
+    padding: 20px;
+    max-height: 92vh;
+  }
+
+  .reportHeader {
+    flex-direction: column;
+  }
+}
+
+
+@keyframes starfieldNear {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-64px, 36px, 0);
+  }
+
+  to {
+    transform: translate3d(-128px, 72px, 0);
+  }
+}
+
+@keyframes starfieldFar {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(36px, 20px, 0);
+  }
+
+  to {
+    transform: translate3d(72px, 40px, 0);
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.45;
+    transform: scale(0.88);
+    box-shadow: 0 0 4px rgba(255, 245, 225, 0.28);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.22);
+    box-shadow: 0 0 16px rgba(255, 245, 225, 0.88);
+  }
+}
+
+@keyframes cloudDriftOne {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-108px, 40px, 0) scale(1.16);
+  }
+}
+
+@keyframes cloudDriftTwo {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(88px, -32px, 0) scale(1.12);
+  }
+}
+.storyParagraph p,
+.choiceText,
+.choiceLabel,
+.sceneMetaRow,
+.deck,
+.authorCredit {
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.48);
+}
+
+
+
+
+
+
+
+
