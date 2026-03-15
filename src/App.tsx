@@ -59,7 +59,7 @@ type ThreadCard = {
   unlocked: boolean
 }
 
-type TabId = 'story' | 'evidence' | 'characters' | 'achievements' | 'threads' | 'state'
+type TabId = 'story' | 'evidence' | 'characters' | 'achievements' | 'threads' | 'state' | 'save'
 
 type EndingJumpSequence = {
   buffer: string
@@ -987,6 +987,7 @@ function App() {
   const [isMobileLayout, setIsMobileLayout] = useState(() => window.localStorage.getItem(MOBILE_LAYOUT_KEY) === 'true')
   const audioElementRef = useRef<HTMLAudioElement | null>(null)
   const [isWorldStateOpen, setIsWorldStateOpen] = useState(false)
+  const [isMobileDossierOpen, setIsMobileDossierOpen] = useState(false)
   const [revealedSceneId, setRevealedSceneId] = useState<string>('')
   const [achievementToasts, setAchievementToasts] = useState<AchievementToast[]>([])
   const [threadMemory, setThreadMemory] = useState<ThreadMemory>(() => readThreadMemory())
@@ -1055,15 +1056,16 @@ function App() {
   }, [currentNode.kind, progressPercent])
 
   const previousAchievementIdsRef = useRef<string[]>([])
-  const achievementsInitializedRef = useRef(false)
+  const previousSceneIdRef = useRef(gameState.currentId)
   const achievementToastKeyRef = useRef(0)
 
   useEffect(() => {
     const unlockedIds = achievements.filter((achievement) => achievement.unlocked).map((achievement) => achievement.id)
+    const sceneChanged = previousSceneIdRef.current !== gameState.currentId
+    previousSceneIdRef.current = gameState.currentId
 
-    if (!achievementsInitializedRef.current) {
+    if (!sceneChanged && previousAchievementIdsRef.current.length === 0) {
       previousAchievementIdsRef.current = unlockedIds
-      achievementsInitializedRef.current = true
       return
     }
 
@@ -1084,12 +1086,12 @@ function App() {
 
     const timeoutId = window.setTimeout(() => {
       setAchievementToasts((current) => current.filter((toast) => toast.key !== key))
-    }, 1600)
+    }, 2800)
 
     return () => {
       window.clearTimeout(timeoutId)
     }
-  }, [achievements])
+  }, [achievements, gameState.currentId])
 
   useEffect(() => {
     writeSnapshot(AUTOSAVE_KEY, gameState)
@@ -1117,6 +1119,7 @@ function App() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsWorldStateOpen(false)
+        setIsMobileDossierOpen(false)
       }
 
       if (event.key.length === 1) {
@@ -1169,6 +1172,7 @@ function App() {
   }, [])
 
   const selectChoice = (choice: Choice) => {
+    setIsMobileDossierOpen(false)
     setRevealedSceneId('')
     setGameState((current) => ({
       currentId: choice.next,
@@ -1186,6 +1190,7 @@ function App() {
   }
 
   const continueScene = () => {
+    setIsMobileDossierOpen(false)
     if (currentNode.kind !== 'scene' || !currentNode.next) {
       return
     }
@@ -1201,6 +1206,7 @@ function App() {
   }
 
   const restart = () => {
+    setIsMobileDossierOpen(false)
     setRevealedSceneId('')
     setGameState(buildInitialState())
   }
@@ -1218,6 +1224,7 @@ function App() {
     const snapshot = readSnapshot(`${SAVE_SLOT_PREFIX}${slot}`)
     if (snapshot) {
       setRevealedSceneId('')
+      setIsMobileDossierOpen(false)
       setIsWorldStateOpen(false)
       setGameState(snapshot)
     }
@@ -1227,13 +1234,16 @@ function App() {
     const snapshot = readSnapshot(AUTOSAVE_KEY)
     if (snapshot) {
       setRevealedSceneId('')
+      setIsMobileDossierOpen(false)
       setIsWorldStateOpen(false)
       setGameState(snapshot)
     }
   }
 
   const openWorldState = () => {
-    setIsWorldStateOpen(true)
+    setIsWorldStateOpen(false)
+    setActiveTab('state')
+    setIsMobileDossierOpen(true)
   }
 
   useEffect(() => {
@@ -1261,7 +1271,7 @@ function App() {
   }
 
   return (
-    <div className={isMobileLayout ? "appShell mobileMode" : "appShell"}>
+    <div className={isMobileLayout ? `appShell mobileMode${isMobileDossierOpen ? ' mobileDossierActive' : ''}` : 'appShell'}>
       <div className="starfield" aria-hidden="true">
         <div className="cloudLayer cloudLayerOne">
           <span className="cloud cloudA" />
@@ -1323,17 +1333,48 @@ function App() {
           </button>
           <button
             className={isMobileLayout ? 'secondaryButton activeControl' : 'secondaryButton'}
-            onClick={() => setIsMobileLayout((current: boolean) => !current)}
+            onClick={() => {
+              setIsMobileLayout((current: boolean) => {
+                const next = !current
+                if (!next) {
+                  setIsMobileDossierOpen(false)
+                }
+                return next
+              })
+            }}
             title="Toggle the compact mobile-style layout"
           >
             Mobile: {isMobileLayout ? 'On' : 'Off'}
           </button>
-          <button className="secondaryButton" onClick={restart}>
-            Restart
-          </button>
-          <button className="secondaryButton" onClick={() => setRevealedSceneId(currentNode.id)}>
-            Reveal Scene
-          </button>
+          {isMobileLayout ? (
+            <button
+              className={isMobileDossierOpen && activeTab === 'save' ? 'secondaryButton activeControl' : 'secondaryButton'}
+              onClick={() => {
+                setActiveTab('save')
+                setIsMobileDossierOpen(true)
+              }}
+            >
+              Save
+            </button>
+          ) : (
+            <>
+              <button
+                className={isMobileDossierOpen ? 'secondaryButton activeControl' : 'secondaryButton'}
+                onClick={() => setIsMobileDossierOpen(true)}
+              >
+                Dossier
+              </button>
+              <button className="secondaryButton" onClick={openWorldState}>
+                World State
+              </button>
+              <button className="secondaryButton" onClick={restart}>
+                Restart
+              </button>
+              <button className="secondaryButton" onClick={() => setRevealedSceneId(currentNode.id)}>
+                Reveal Scene
+              </button>
+            </>
+          )}
         </div>
       </header>
 
@@ -1476,7 +1517,7 @@ function App() {
                           ? `${effect.variable} ${effect.amount > 0 ? '+' : ''}${effect.amount}`
                           : `${effect.variable} = ${String(effect.value)}`,
                       )
-                      .join(' � ')}
+                      .join(' / ')}
                   </p>
                 ) : null}
                 <button className="primaryButton" onClick={continueScene}>
@@ -1488,7 +1529,32 @@ function App() {
           </div>
         </section>
 
-        <aside className="dossierPanel">
+        {isMobileDossierOpen ? (
+          <button className="dossierBackdrop" onClick={() => setIsMobileDossierOpen(false)} aria-label="Close dossier" />
+        ) : null}
+
+        <aside
+          className={
+            isMobileLayout
+              ? isMobileDossierOpen
+                ? 'dossierPanel mobileVisible'
+                : 'dossierPanel'
+              : isMobileDossierOpen
+                ? 'dossierPanel desktopVisible'
+                : 'dossierPanel'
+          }
+        >
+          {isMobileDossierOpen ? (
+            <div className={isMobileLayout ? 'mobileDossierHeader' : 'dossierHeader'}>
+              <div>
+                <p>Dossier</p>
+                <strong>Field Notes</strong>
+              </div>
+              <button className="secondaryButton small" onClick={() => setIsMobileDossierOpen(false)}>
+                Close
+              </button>
+            </div>
+          ) : null}
           <div className="tabs">
             {([
               ['story', 'Story'],
@@ -1503,8 +1569,7 @@ function App() {
                 key={id}
                 onClick={() => {
                   if (id === 'state') {
-                    openWorldState()
-                    return
+                    setIsWorldStateOpen(false)
                   }
                   setActiveTab(id)
                 }}
@@ -1652,8 +1717,74 @@ function App() {
               </section>
             </div>
           ) : null}
+
+          {activeTab === 'state' ? (
+            <div className="tabContent">
+              <section className="panelBlock">
+                <h3>World State</h3>
+                <p className="threadsIntro">A field-style reading of how this run is evolving beneath the surface.</p>
+                <div className="signalList">
+                  {worldStateSignals.map((signal) => (
+                    <article className="signalCard" key={signal.label}>
+                      <div>
+                        <span>{signal.label}</span>
+                        <strong>{signal.value}</strong>
+                      </div>
+                      <p>{signal.detail}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            </div>
+          ) : null}
+
+          {activeTab === 'save' ? (
+            <div className="tabContent">
+              <section className="panelBlock">
+                <h3>Save / Load</h3>
+                <div className="saveList">
+                  <button className="saveCard autosave" onClick={loadAutosave}>
+                    <strong>Autosave</strong>
+                    <span>{formatSavedAt(readSavedAt(AUTOSAVE_KEY))}</span>
+                    <small>Loads the most recent automatic checkpoint.</small>
+                  </button>
+                  {Array.from({ length: SAVE_SLOT_COUNT }, (_, index) => {
+                    const slot = index + 1
+                    return (
+                      <div className="saveSlotRow" key={slot}>
+                        <button className="saveCard" onClick={() => loadFromSlot(slot)}>
+                          <strong>Slot {slot}</strong>
+                          <span>{formatSavedAt(slotTimestamps[slot])}</span>
+                        </button>
+                        <button className="secondaryButton small" onClick={() => saveToSlot(slot)}>
+                          Save
+                        </button>
+                      </div>
+                    )
+                  })}
+                </div>
+              </section>
+            </div>
+          ) : null}
         </aside>
       </main>
+
+      {isMobileLayout ? (
+        <div className="mobileUtilityBar">
+          <button
+            className={isMobileDossierOpen ? 'secondaryButton activeControl' : 'secondaryButton'}
+            onClick={() => setIsMobileDossierOpen(true)}
+          >
+            Dossier
+          </button>
+          <button className="secondaryButton" onClick={() => setRevealedSceneId(currentNode.id)}>
+            Reveal
+          </button>
+          <button className="secondaryButton" onClick={restart}>
+            Restart
+          </button>
+        </div>
+      ) : null}
 
       {isWorldStateOpen ? (
         <div className="reportOverlay" onClick={closeWorldState} role="presentation">
@@ -1723,10 +1854,6 @@ function App() {
 }
 
 export default App
-
-
-
-
 
 
 
