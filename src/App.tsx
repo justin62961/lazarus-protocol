@@ -17,6 +17,7 @@ const SAVE_SLOT_PREFIX = 'lazarus-protocol-slot-'
 const SAVE_SLOT_COUNT = 3
 const AMBIENT_AUDIO_KEY = 'lazarus-protocol-audio-enabled'
 const THREAD_MEMORY_KEY = 'lazarus-protocol-thread-memory'
+const MOBILE_LAYOUT_KEY = 'lazarus-protocol-mobile-layout'
 
 type GameState = {
   currentId: string
@@ -983,6 +984,7 @@ function App() {
   const [gameState, setGameState] = useState<GameState>(() => readSnapshot(AUTOSAVE_KEY) ?? buildInitialState())
   const [activeTab, setActiveTab] = useState<TabId>('story')
   const [isAudioEnabled, setIsAudioEnabled] = useState(() => window.localStorage.getItem(AMBIENT_AUDIO_KEY) === 'true')
+  const [isMobileLayout, setIsMobileLayout] = useState(() => window.localStorage.getItem(MOBILE_LAYOUT_KEY) === 'true')
   const audioElementRef = useRef<HTMLAudioElement | null>(null)
   const [isWorldStateOpen, setIsWorldStateOpen] = useState(false)
   const [revealedSceneId, setRevealedSceneId] = useState<string>('')
@@ -1146,6 +1148,10 @@ function App() {
   }, [isAudioEnabled])
 
   useEffect(() => {
+    window.localStorage.setItem(MOBILE_LAYOUT_KEY, String(isMobileLayout))
+  }, [isMobileLayout])
+
+  useEffect(() => {
     if (!themeSongUrl) {
       return
     }
@@ -1255,7 +1261,7 @@ function App() {
   }
 
   return (
-    <div className="appShell">
+    <div className={isMobileLayout ? "appShell mobileMode" : "appShell"}>
       <div className="starfield" aria-hidden="true">
         <div className="cloudLayer cloudLayerOne">
           <span className="cloud cloudA" />
@@ -1314,6 +1320,13 @@ function App() {
             title={themeSongUrl ? 'Toggle the theme song' : 'Add src/assets/audio/theme song.mp3 to enable music'}
           >
             {themeSongUrl ? `Audio: ${isAudioEnabled ? 'On' : 'Off'}` : 'Audio File Missing'}
+          </button>
+          <button
+            className={isMobileLayout ? 'secondaryButton activeControl' : 'secondaryButton'}
+            onClick={() => setIsMobileLayout((current: boolean) => !current)}
+            title="Toggle the compact mobile-style layout"
+          >
+            Mobile: {isMobileLayout ? 'On' : 'Off'}
           </button>
           <button className="secondaryButton" onClick={restart}>
             Restart

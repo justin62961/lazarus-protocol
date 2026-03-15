@@ -849,331 +849,156 @@
   }
 }
 
-@media (max-width: 1080px) {
-  .appShell {
-    padding: 18px;
-  }
-
-  .novelLayout {
-    grid-template-columns: 1fr;
-  }
-
-  .tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.appShell.mobileMode {
+  padding: 12px;
 }
 
-@media (max-width: 720px) {
-  .appShell {
-    padding: 12px;
-  }
-
-  .masthead {
-    top: 8px;
-    padding: 14px;
-    gap: 14px;
-    flex-direction: column;
-    border-radius: 18px;
-  }
-
-  .masthead h1 {
-    font-size: 1.8rem;
-    line-height: 1.08;
-    margin: 0;
-  }
-
-  .eyebrow {
-    font-size: 0.66rem;
-    letter-spacing: 0.2em;
-    margin-bottom: 8px;
-  }
-
-  .authorCredit {
-    margin: 6px 0 10px;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-  }
-
-  .deck {
-    font-size: 0.92rem;
-    line-height: 1.55;
-  }
-
-  .topControls {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    width: 100%;
-    gap: 8px;
-  }
-
-  .topControls .secondaryButton {
-    min-height: 46px;
-    padding: 10px 8px;
-    font-size: 0.78rem;
-  }
-
-  .novelLayout {
-    gap: 14px;
-  }
-
-  .sceneCard,
-  .dossierPanel {
-    border-radius: 20px;
-  }
-
-  .sceneCard {
-    padding: 18px;
-  }
-
-  .sceneMetaRow {
-    gap: 8px;
-    font-size: 0.74rem;
-    letter-spacing: 0.08em;
-  }
-
-  .sceneMetaRow.cast {
-    font-size: 0.86rem;
-  }
-
-  .progressPanel,
-  .locationPlate,
-  .panelBlock {
-    padding: 14px;
-  }
-
-  .storyBody {
-    gap: 14px;
-    margin: 20px 0 24px;
-  }
-
-  .storyParagraph p {
-    font-size: 1rem;
-    line-height: 1.72;
-  }
-
-  .choiceButton {
-    padding: 14px 15px;
-    border-radius: 16px;
-  }
-
-  .choiceText {
-    font-size: 0.98rem;
-    line-height: 1.45;
-  }
-
-  .dossierPanel {
-    padding: 14px;
-  }
-
-  .tabs {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .tabs::-webkit-scrollbar {
-    display: none;
-  }
-
-  .tabButton {
-    flex: 0 0 auto;
-    min-width: 132px;
-    min-height: 44px;
-    padding: 10px 12px;
-    scroll-snap-align: start;
-    white-space: nowrap;
-  }
-
-  .flagCard > div,
-  .evidenceCard > div,
-  .achievementCard > div,
-  .signalCard > div,
-  .saveSlotRow {
-    align-items: flex-start;
-  }
-
-  .endingRecapGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .endingCasefile,
-  .endingRecapCard {
-    padding: 14px;
-  }
-
-  .endingCasefileHeader {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .variableGrid {
-    grid-template-columns: 1fr;
-  }
+.appShell.mobileMode .masthead {
+  top: 8px;
+  padding: 14px;
+  gap: 14px;
+  flex-direction: column;
+  border-radius: 18px;
 }
 
-
-
-.signalCard strong {
-  font-size: 1.02rem;
-}
-
-.signalCard p {
-  margin-top: 8px;
-}
-
-
-.achievementToastStack {
-  position: fixed;
-  inset: 0;
-  z-index: 70;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  padding: 24px;
-}
-
-.achievementToast {
-  width: min(440px, calc(100vw - 40px));
-  border: 1px solid rgba(205, 182, 134, 0.42);
-  border-radius: 22px;
-  padding: 18px 22px;
-  background: linear-gradient(180deg, rgba(13, 22, 33, 0.96), rgba(7, 12, 20, 0.92));
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(12px);
-  text-align: center;
-  animation: achievementFlash 1.6s ease forwards;
-}
-
-.achievementToast span {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.72rem;
-}
-
-.achievementToast strong {
-  display: block;
-  color: var(--heading-color);
-  margin-bottom: 8px;
-  font-size: 1.22rem;
-}
-
-.achievementToast p {
+.appShell.mobileMode .masthead h1 {
+  font-size: 1.8rem;
+  line-height: 1.08;
   margin: 0;
-  color: var(--text-soft);
+}
+
+.appShell.mobileMode .eyebrow {
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.appShell.mobileMode .authorCredit {
+  margin: 6px 0 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.appShell.mobileMode .deck {
+  font-size: 0.92rem;
   line-height: 1.55;
 }
 
-.reportOverlay {
-  z-index: 40;
-  position: fixed;
-  inset: 0;
-  z-index: 40;
+.appShell.mobileMode .topControls {
   display: grid;
-  place-items: center;
-  padding: 28px;
-  background: rgba(2, 6, 10, 0.64);
-  backdrop-filter: blur(8px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  gap: 8px;
 }
 
-.reportSheet {
-  width: min(860px, 100%);
-  max-height: min(88vh, 920px);
-  overflow: auto;
-  padding: 28px;
-  border-radius: 24px;
-  border: 1px solid rgba(109, 83, 42, 0.35);
-  background:
-    linear-gradient(180deg, rgba(134, 105, 61, 0.1), rgba(95, 76, 45, 0.02)),
-    linear-gradient(180deg, #e7dcc5 0%, #dbcdaa 100%);
-  color: #232629;
-  box-shadow:
-    0 32px 100px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+.appShell.mobileMode .topControls .secondaryButton {
+  min-height: 46px;
+  padding: 10px 8px;
+  font-size: 0.78rem;
 }
 
-.reportSheet h2,
-.reportSheet h3,
-.reportSheet strong {
-  color: #171a1c;
+.appShell.mobileMode .novelLayout {
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
 
-.reportSheet p,
-.reportSheet span,
-.reportSheet small,
-.reportSheet button {
-  color: #2f3438;
+.appShell.mobileMode .sceneCard,
+.appShell.mobileMode .dossierPanel {
+  border-radius: 20px;
 }
 
-.reportHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 22px;
+.appShell.mobileMode .sceneCard {
+  padding: 18px;
 }
 
-.reportKicker {
-  font-family: var(--mono);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
+.appShell.mobileMode .sceneMetaRow {
+  gap: 8px;
   font-size: 0.74rem;
-  color: #555b60;
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-.reportIntro {
-  max-width: 54ch;
+.appShell.mobileMode .sceneMetaRow.cast {
+  font-size: 0.86rem;
 }
 
-.reportClose {
-  border: 1px solid rgba(70, 50, 26, 0.18);
-  background: rgba(104, 109, 113, 0.32);
-  border-radius: 999px;
-  padding: 10px 14px;
-  cursor: pointer;
+.appShell.mobileMode .progressPanel,
+.appShell.mobileMode .locationPlate,
+.appShell.mobileMode .panelBlock,
+.appShell.mobileMode .endingCasefile,
+.appShell.mobileMode .endingRecapCard {
+  padding: 14px;
 }
 
-.reportBlock {
-  padding-top: 18px;
-  margin-top: 18px;
-  border-top: 1px dashed rgba(70, 50, 26, 0.24);
+.appShell.mobileMode .storyBody {
+  gap: 14px;
+  margin: 20px 0 24px;
 }
 
-.reportBlock:first-of-type {
-  border-top: none;
-  margin-top: 0;
-  padding-top: 0;
+.appShell.mobileMode .storyParagraph p {
+  font-size: 1rem;
+  line-height: 1.72;
 }
 
-.reportCard {
-  background: rgba(123, 127, 131, 0.22);
-  border-color: rgba(70, 50, 26, 0.14);
+.appShell.mobileMode .choiceButton {
+  padding: 14px 15px;
+  border-radius: 16px;
 }
 
-.reportInlineCard {
-  background: transparent;
-  border: none;
-  padding: 0;
+.appShell.mobileMode .choiceText {
+  font-size: 0.98rem;
+  line-height: 1.45;
 }
 
-.reportSheet .saveCard,
-.reportSheet .secondaryButton {
-  background: rgba(129, 133, 138, 0.24);
-  border-color: rgba(70, 50, 26, 0.18);
+.appShell.mobileMode .dossierPanel {
+  padding: 14px;
 }
 
-.reportSheet .saveCard:hover,
-.reportSheet .secondaryButton:hover,
-.reportClose:hover {
-  border-color: #7d8489;
+.appShell.mobileMode .tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
 }
+
+.appShell.mobileMode .tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.appShell.mobileMode .tabButton {
+  flex: 0 0 auto;
+  min-width: 132px;
+  min-height: 44px;
+  padding: 10px 12px;
+  scroll-snap-align: start;
+  white-space: nowrap;
+}
+
+.appShell.mobileMode .flagCard > div,
+.appShell.mobileMode .evidenceCard > div,
+.appShell.mobileMode .achievementCard > div,
+.appShell.mobileMode .signalCard > div,
+.appShell.mobileMode .saveSlotRow {
+  align-items: flex-start;
+}
+
+.appShell.mobileMode .endingRecapGrid {
+  grid-template-columns: 1fr;
+}
+
+.appShell.mobileMode .endingCasefileHeader,
+.appShell.mobileMode .progressHeader {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.appShell.mobileMode .sceneMetaRow {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 
 @media (max-width: 720px) {
   .reportOverlay {
@@ -1270,44 +1095,3 @@
 
 
 
-@media (max-width: 540px) {
-  .masthead h1 {
-    font-size: 1.55rem;
-  }
-
-  .topControls {
-    grid-template-columns: 1fr;
-  }
-
-  .topControls .secondaryButton {
-    width: 100%;
-  }
-
-  .sceneCard {
-    padding: 16px 14px;
-  }
-
-  .sceneMetaRow {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .progressHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-
-  .locationPlate strong,
-  .endingCasefileHeader strong {
-    font-size: 0.92rem;
-  }
-
-  .choiceButton {
-    padding: 13px 14px;
-  }
-
-  .reportSheet {
-    padding: 16px;
-  }
-}
